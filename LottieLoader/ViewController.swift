@@ -16,8 +16,8 @@ class ViewController: UIViewController {
     }
     
     @IBAction func showAnimation(_ sender: UIButton) {
-        self.view.showLoader()
-        _ = Timer.scheduledTimer(timeInterval: 5, target: self, selector: #selector(timerDone), userInfo: nil, repeats: false)
+        self.view.showLoader(isFromServer: false)
+        _ = Timer.scheduledTimer(timeInterval: 20, target: self, selector: #selector(timerDone), userInfo: nil, repeats: false)
     }
     
     @objc func timerDone(){
@@ -26,8 +26,8 @@ class ViewController: UIViewController {
     
 }
 extension UIView {
-    func showLoader() {
-        let loader = Loader(frame: frame)
+    func showLoader(isFromServer: Bool = false) {
+        let loader = Loader(frame: frame, isFromServer: isFromServer)
         self.addSubview(loader)
     }
     func hideLoader() {
